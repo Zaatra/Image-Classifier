@@ -1,12 +1,18 @@
-from classifier import classifier 
+from classifier import classifier
+import os  # Import the os module for path manipulation
+
 def classify_images(images_dir, results_dic, model):
-    for key in results_dic:
-        image_classification = classifier(images_dir + key, model)
+    for key, value in results_dic.items(): 
+        # Use os.path.join() to construct the correct file path
+        image_path = os.path.join(images_dir, key) 
+        image_classification = classifier(image_path, model)
         lower_case_classifier = image_classification.lower()
         classifier_label = lower_case_classifier.strip()
-        truth = results_dic[key][0]
+        truth = value[0]
+
         if truth in classifier_label:
-            results_dic[key].extend([classifier_label, 1])
+            value.extend([classifier_label, 1])
         else:
-            results_dic[key].extend([classifier_label, 0])
+            value.extend([classifier_label, 0])
+
         print(f"Image: {key}, Predicted: {classifier_label}, Correct: {truth}, Match: {truth in classifier_label}")
