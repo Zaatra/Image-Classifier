@@ -47,9 +47,9 @@ def check_classifying_images(results_dic):
               "# NOT Matches:",n_notmatch)
 def check_classifying_labels_as_dogs(results_dic):
     if results_dic is None:
-        print("* Doesn't Check the Results Dictionary because 'adjust_results4_isadog' hasn't been defined.")
+        print("* Doesn't Check the Results Dictionary because 'adjust_results_isadog' hasn't been defined.")
     elif len(results_dic[next(iter(results_dic))]) < 4 :
-        print("* Doesn't Check the Results Dictionary because 'adjust_results4_isadog' hasn't been defined.")
+        print("* Doesn't Check the Results Dictionary because 'adjust_results_isadog' hasn't been defined.")
     else:
         n_match = 0
         n_notmatch = 0

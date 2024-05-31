@@ -1,4 +1,4 @@
-def adjust_results4_isadog(results_dic, dogfile):
+def adjust_results_isadog(results_dic, dogfile):
     dognames_dic = dict()
     with open (dogfile, "r") as infile:
       line = infile.readline()
