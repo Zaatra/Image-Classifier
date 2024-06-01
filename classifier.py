@@ -4,12 +4,18 @@ import torchvision.transforms as transforms
 from torch.autograd import Variable
 import torchvision.models as models
 from torch import __version__
-resnet18 = models.resnet18(pretrained=True)
-alexnet = models.alexnet(pretrained=True)
-vgg16 = models.vgg16(pretrained=True)
+from torchvision.models import resnet18, ResNet18_Weights, alexnet, AlexNet_Weights, vgg16, VGG16_Weights
+
+# Load pre-trained models with the correct weight enums
+resnet18 = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1) 
+alexnet = alexnet(weights=AlexNet_Weights.IMAGENET1K_V1) 
+vgg16 = vgg16(weights=VGG16_Weights.IMAGENET1K_V1)
+
 models = {'resnet': resnet18, 'alexnet': alexnet, 'vgg': vgg16}
+
 with open('imagenet1000_clsid_to_human.txt') as imagenet_classes_file:
     imagenet_classes_dict = ast.literal_eval(imagenet_classes_file.read())
+
 def classifier(img_path, model_name):
     img_pil = Image.open(img_path)
     preprocess = transforms.Compose([
