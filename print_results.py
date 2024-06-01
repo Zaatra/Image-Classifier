@@ -1,5 +1,6 @@
 def print_results(results_dic, results_stats_dic, model, 
-                  print_incorrect_dogs = False, print_incorrect_breed = False):
+                  print_incorrect_dogs = False, print_incorrect_breed = False,
+                  dir='', arch='', dogfile=''):  # Add arguments
     print("\n\n*** Results Summary for CNN Model Architecture",model.upper(),"***")
     print("{:20}: {:3d}".format('N Images', results_stats_dic['n_images']))
     print("{:20}: {:3d}".format('N Dog Images', results_stats_dic['n_dogs_img']))
@@ -15,7 +16,7 @@ def print_results(results_dic, results_stats_dic, model,
           != results_stats_dic['n_images'] )):
         print("\nINCORRECT Dog/NOT Dog Assignments:")
         for value in results_dic.values():
-            if value[3] != value[4]:  # Simplified condition
+            if value[3] != value[4]: 
                 print("Real: {:>26}   Classifier: {:>30}".format(value[0], value[1]))
 
     if (print_incorrect_breed and 
@@ -26,3 +27,9 @@ def print_results(results_dic, results_stats_dic, model,
                 value[2] == 0 ):
                 print("Real: {:>26}   Classifier: {:>30}".format(value[0],
                                                           value[1]))
+
+    # Print argument information
+    print("\n\n*** Argument Information ***")
+    print(f"Directory: {dir}")
+    print(f"Architecture: {arch}")
+    print(f"Dog Names File: {dogfile}")
