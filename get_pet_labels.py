@@ -15,17 +15,15 @@ def get_pet_labels(image_dir):
     filename_list = listdir(image_dir)
     results_dic = dict()
 
-    for filename in filename_list:  # Iterate directly over the list
+    for filename in filename_list:  
         if not filename.startswith("."):
             image_name = filename.lower()
             word_list_image = image_name.split("_")
-            pet_name = ""
-            for word in word_list_image:
-                if word.isalpha():
-                    pet_name += word + " "
-            pet_name = pet_name.strip()
 
-            if filename not in results_dic:  # Use filename directly
+            # Extract alphabetic words using a list comprehension
+            pet_name = " ".join([word for word in word_list_image if word.isalpha()])
+
+            if filename not in results_dic:
                 results_dic[filename] = [pet_name]
             else:
                 print(f"Duplicate file: {filename}")
