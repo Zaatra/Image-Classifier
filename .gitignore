@@ -1,3 +1,5 @@
+.gitignore
 *.jpg
 _pycache_/
 Results/
+readme.md
