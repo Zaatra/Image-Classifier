@@ -20,7 +20,7 @@ def print_results(results_dic, results_stats_dic, model,
 
     if (print_incorrect_breed and 
         (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
-        print("\nINCORRECT Dog Breed Assignment:")
+        print("\nIncorrect Dog Breed Assignment:")
         for value in results_dic.values():
             if ( sum(value[3:]) == 2 and
                 value[2] == 0 ):
