@@ -15,8 +15,8 @@ def print_results(results_dic, results_stats_dic, model,
           != results_stats_dic['n_images'] )):
         print("\nINCORRECT Dog/NOT Dog Assignments:")
         for value in results_dic.values():
-            if (value[3] == 1 and value[4] == 0) or (value[3] == 0 and value[4] == 1):
-                print("Pet Image Label: {:>26}   Classifier Label: {:>30}".format(value[0], value[1]))
+            if value[3] != value[4]:  # Simplified condition
+                print("Real: {:>26}   Classifier: {:>30}".format(value[0], value[1]))
 
     if (print_incorrect_breed and 
         (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
